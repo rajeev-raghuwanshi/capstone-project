@@ -1,0 +1,54 @@
+name: Documentation sync review
+
+on:
+  pull_request:
+    types: [opened, synchronize, reopened, ready_for_review]
+
+permissions:
+  contents: read
+
+jobs:
+  documentation-sync:
+    name: Detect and review documentation drift
+    runs-on: ubuntu-latest
+    steps:
+      - name: Check out pull request without persisted credentials
+        uses: actions/checkout@v4
+        with:
+          ref: refs/pull/${{ github.event.pull_request.number }}/head
+          fetch-depth: 0
+          persist-credentials: false
+
+      - name: Set up Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: 18
+          cache: npm
+
+      - name: Install dependencies
+        run: npm ci
+
+      - name: Run application and sync tests
+        run: npm test
+
+      - name: Validate mapped Markdown and local links
+        run: node docs-sync/validate-markdown.js
+
+      - name: Generate documentation review report
+        run: |
+          node docs-sync/review-proposals.js \
+            "${{ github.event.pull_request.base.sha }}" \
+            "${{ github.event.pull_request.head.sha }}" \
+            > documentation-review.json
+
+      - name: Verify synchronized documentation contracts
+        run: node docs-sync/compare-docs.js
+
+      - name: Upload review report and proposed patch
+        if: always() && hashFiles('documentation-review.json') != ''
+        uses: actions/upload-artifact@v4
+        with:
+          name: documentation-review-${{ github.event.pull_request.number }}
+          path: documentation-review.json
+          if-no-files-found: error
+          retention-days: 14

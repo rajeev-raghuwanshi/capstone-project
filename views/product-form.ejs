@@ -1,0 +1,43 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title><%= heading %></title>
+  </head>
+  <body>
+    <main>
+      <h1><%= heading %></h1>
+      <form method="post" action="<%= action %>">
+        <div>
+          <label for="name">Name</label>
+          <input id="name" name="name" required value="<%= product.name || '' %>">
+          <% if (errors.name) { %><p role="alert"><%= errors.name %></p><% } %>
+        </div>
+        <div>
+          <label for="price">Price (INR)</label>
+          <input id="price" name="price" inputmode="decimal" required value="<%= product.price || '' %>">
+          <% if (errors.price) { %><p role="alert"><%= errors.price %></p><% } %>
+        </div>
+        <div>
+          <label for="description">Description</label>
+          <textarea id="description" name="description"><%= product.description || '' %></textarea>
+          <% if (errors.description) { %><p role="alert"><%= errors.description %></p><% } %>
+        </div>
+        <div>
+          <label for="category">Category</label>
+          <input id="category" name="category" value="<%= product.category || '' %>">
+          <% if (errors.category) { %><p role="alert"><%= errors.category %></p><% } %>
+        </div>
+        <div>
+          <label for="imageUrl">Image URL</label>
+          <input id="imageUrl" name="imageUrl" value="<%= product.imageUrl || '' %>">
+          <% if (errors.imageUrl) { %><p role="alert"><%= errors.imageUrl %></p><% } %>
+        </div>
+        <% if (errors.form) { %><p role="alert"><%= errors.form %></p><% } %>
+        <button type="submit">Save product</button>
+        <a href="/">Cancel</a>
+      </form>
+    </main>
+  </body>
+</html>

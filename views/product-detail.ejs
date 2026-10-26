@@ -1,0 +1,20 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title><%= product.name %></title>
+  </head>
+  <body>
+    <main>
+      <h1><%= product.name %></h1>
+      <p>INR <%= formatPrice(product.pricePaise) %></p>
+      <% if (product.description) { %><p><%= product.description %></p><% } %>
+      <% if (product.category) { %><p>Category: <%= product.category %></p><% } %>
+      <% if (product.imageUrl) { %><p>Image URL: <%= product.imageUrl %></p><% } %>
+      <p><a href="/products/<%= encodeURIComponent(product.id) %>/edit">Edit product</a></p>
+      <p><a href="/products/<%= encodeURIComponent(product.id) %>/delete">Delete product</a></p>
+      <p><a href="/">Back to catalogue</a></p>
+    </main>
+  </body>
+</html>

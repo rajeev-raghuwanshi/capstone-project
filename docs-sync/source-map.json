@@ -1,0 +1,97 @@
+{
+  "version": 1,
+  "pathBase": "repository-root",
+  "relevantSourceExtensions": [".js", ".cjs", ".mjs", ".ejs"],
+  "ignoredSourcePrefixes": ["test/", "docs-sync/", "node_modules/"],
+  "mappings": [
+    {
+      "id": "browser-routes",
+      "sourcePaths": [
+        "routes/",
+        "app.js",
+        "product-service.js",
+        "docs-sync/contracts/routes.json"
+      ],
+      "documents": ["docs/routes.md"],
+      "contract": "docs-sync/contracts/routes.json",
+      "contractId": "routes",
+      "verification": [
+        "test/products-routes.test.js",
+        "test/application-integration.test.js",
+        "test/contracts.test.js"
+      ]
+    },
+    {
+      "id": "product-model",
+      "sourcePaths": [
+        "product.js",
+        "product-service.js",
+        "docs-sync/contracts/product.json"
+      ],
+      "documents": ["docs/product-data.md"],
+      "contract": "docs-sync/contracts/product.json",
+      "contractId": "product",
+      "verification": [
+        "test/product.test.js",
+        "test/products-routes.test.js",
+        "test/contracts.test.js"
+      ]
+    },
+    {
+      "id": "route-views",
+      "sourcePaths": ["views/"],
+      "documents": ["docs/routes.md"],
+      "contract": "docs-sync/contracts/routes.json",
+      "contractId": "routes",
+      "verification": [
+        "test/products-routes.test.js",
+        "test/application-integration.test.js",
+        "test/contracts.test.js"
+      ]
+    },
+    {
+      "id": "product-form-view",
+      "sourcePaths": ["views/product-form.ejs"],
+      "documents": ["docs/product-data.md"],
+      "contract": "docs-sync/contracts/product.json",
+      "contractId": "product",
+      "verification": [
+        "test/products-routes.test.js",
+        "test/contracts.test.js"
+      ]
+    },
+    {
+      "id": "json-persistence",
+      "sourcePaths": [
+        "product-repository.js",
+        "docs-sync/contracts/persistence.json"
+      ],
+      "documents": ["docs/product-data.md"],
+      "contract": "docs-sync/contracts/persistence.json",
+      "contractId": "persistence",
+      "verification": [
+        "test/product-repository.test.js",
+        "test/application-integration.test.js",
+        "test/contracts.test.js"
+      ]
+    },
+    {
+      "id": "application-setup",
+      "sourcePaths": [
+        "app.js",
+        "index.js",
+        "package.json",
+        "package-lock.json",
+        "docs-sync/contracts/setup.json"
+      ],
+      "documents": ["README.md"],
+      "contract": "docs-sync/contracts/setup.json",
+      "contractId": "setup",
+      "verification": [
+        "test/app.test.js",
+        "test/application-integration.test.js",
+        "test/contracts.test.js"
+      ]
+    }
+  ]
+}

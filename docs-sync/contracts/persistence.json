@@ -1,0 +1,11 @@
+{
+  "version": 1,
+  "filePath": "data/products.json",
+  "format": "json-array",
+  "missingFileBehavior": "initialize-empty-array",
+  "invalidDataBehavior": "raise-storage-error-and-preserve-file",
+  "storageErrorName": "ProductStorageError",
+  "serializeOperationsInProcess": true,
+  "writeStrategy": "same-directory-temporary-file-then-rename",
+  "coordinateMultipleProcesses": false
+}

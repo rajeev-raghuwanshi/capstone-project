@@ -1,0 +1,64 @@
+{
+  "version": 1,
+  "id": {
+    "storedName": "id",
+    "format": "uuid-v4",
+    "pattern": "^[0-9a-f]{8}-[0-9a-f]{4}-4[0-9a-f]{3}-[89ab][0-9a-f]{3}-[0-9a-f]{12}$",
+    "generatedBy": "node:crypto.randomUUID",
+    "immutable": true
+  },
+  "fields": [
+    {
+      "inputName": "name",
+      "storedName": "name",
+      "inputType": "text",
+      "storedType": "string",
+      "required": true,
+      "trim": true,
+      "nonEmpty": true
+    },
+    {
+      "inputName": "price",
+      "storedName": "pricePaise",
+      "inputType": "decimal-string",
+      "storedType": "positive-integer-string",
+      "currency": "INR",
+      "required": true,
+      "trim": true,
+      "positive": true,
+      "storedPattern": "^[1-9][0-9]*$",
+      "maxFractionDigits": 2,
+      "allowLeadingPlus": true,
+      "allowLeadingDecimalPoint": true
+    },
+    {
+      "inputName": "description",
+      "storedName": "description",
+      "inputType": "text",
+      "storedType": "string",
+      "optional": true,
+      "trim": true,
+      "blankValue": "omit"
+    },
+    {
+      "inputName": "category",
+      "storedName": "category",
+      "inputType": "text",
+      "storedType": "string",
+      "optional": true,
+      "trim": true,
+      "blankValue": "omit",
+      "allowedValues": null
+    },
+    {
+      "inputName": "imageUrl",
+      "storedName": "imageUrl",
+      "inputType": "text",
+      "storedType": "string",
+      "optional": true,
+      "trim": true,
+      "blankValue": "omit",
+      "formatValidation": false
+    }
+  ]
+}

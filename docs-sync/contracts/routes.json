@@ -1,0 +1,85 @@
+{
+  "version": 1,
+  "routes": [
+    {
+      "id": "catalogue",
+      "method": "GET",
+      "path": "/",
+      "purpose": "Display the product catalogue.",
+      "inputs": [],
+      "successResponses": [200],
+      "otherResponses": [500],
+      "protection": null
+    },
+    {
+      "id": "create-form",
+      "method": "GET",
+      "path": "/products/new",
+      "purpose": "Display the create-product form.",
+      "inputs": [],
+      "successResponses": [200],
+      "otherResponses": [],
+      "protection": null
+    },
+    {
+      "id": "create-product",
+      "method": "POST",
+      "path": "/products",
+      "purpose": "Create a product.",
+      "inputs": ["name", "price", "description", "category", "imageUrl"],
+      "successResponses": [303],
+      "otherResponses": [403, 422, 500],
+      "protection": "local-origin"
+    },
+    {
+      "id": "edit-form",
+      "method": "GET",
+      "path": "/products/:id/edit",
+      "purpose": "Display the edit-product form.",
+      "inputs": ["id"],
+      "successResponses": [200],
+      "otherResponses": [404, 500],
+      "protection": null
+    },
+    {
+      "id": "update-product",
+      "method": "POST",
+      "path": "/products/:id/edit",
+      "purpose": "Update a product without changing its ID.",
+      "inputs": ["id", "name", "price", "description", "category", "imageUrl"],
+      "successResponses": [303],
+      "otherResponses": [403, 404, 422, 500],
+      "protection": "local-origin"
+    },
+    {
+      "id": "delete-confirmation",
+      "method": "GET",
+      "path": "/products/:id/delete",
+      "purpose": "Display product deletion confirmation.",
+      "inputs": ["id"],
+      "successResponses": [200],
+      "otherResponses": [404, 500],
+      "protection": null
+    },
+    {
+      "id": "delete-product",
+      "method": "POST",
+      "path": "/products/:id/delete",
+      "purpose": "Delete a product after confirmation.",
+      "inputs": ["id"],
+      "successResponses": [303],
+      "otherResponses": [403, 404, 500],
+      "protection": "local-origin"
+    },
+    {
+      "id": "product-detail",
+      "method": "GET",
+      "path": "/products/:id",
+      "purpose": "Display product details.",
+      "inputs": ["id"],
+      "successResponses": [200],
+      "otherResponses": [404, 500],
+      "protection": null
+    }
+  ]
+}

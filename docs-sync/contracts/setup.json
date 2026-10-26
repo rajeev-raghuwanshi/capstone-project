@@ -1,0 +1,18 @@
+{
+  "version": 1,
+  "nodeMinimumMajor": 18,
+  "host": "127.0.0.1",
+  "portEnvironmentVariable": "PORT",
+  "defaultPort": 3000,
+  "commands": {
+    "install": "npm install",
+    "start": "npm start",
+    "test": "npm test"
+  },
+  "packageScripts": {
+    "start": "node index.js",
+    "test": "node --test"
+  },
+  "dependencies": ["express", "ejs"],
+  "documentation": "README.md"
+}
